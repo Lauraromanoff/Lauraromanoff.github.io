@@ -118,6 +118,7 @@
 			
 			/* == tablet == */
 			@media screen and (min-width:768px) {
+				.twoCol { display: grid; grid-template-columns: 1fr 1fr; gap:2em; }
 				.profilepic { max-width: 264px; }
 				.servicesRow { border-bottom: 1px solid #13242D; display: grid; grid-template-columns: 1fr 1fr; column-gap: 3rem; }
 				.servicesRow h3 { border-bottom: none; }
@@ -126,7 +127,6 @@
 			
 			/* == desktop == */
 			@media screen and (min-width:1178px) {
-				.twoCol { display: grid; grid-template-columns: 1fr 1fr; gap:2em; }
 				.servicesRow { border-bottom: 1px solid #13242D; display: grid; grid-template-columns: 1fr 1fr; column-gap: 3rem; }
 				.workwrap { grid-template-columns: repeat(5, minmax(135px, 1fr)); column-gap: 4em; }
 				.clink { font-size: 2em; margin: 0 0 2rem; }
