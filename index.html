@@ -15,6 +15,7 @@
 		<meta property="og:type" content="website">
 		<meta property="og:image" content="https://www.image.jpg">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 		<style>
 			@font-face {
 				font-family: 'messina_sansbold';
@@ -41,23 +42,24 @@
 			
 			}
 			body, html { color: #1B2D26; }
-			h1 { font-family: 'messina_sansbold', sans-serif; font-size: 66px; margin: 80px 0 0; color: #FFF; padding:0; font-weight: normal; font-style: normal; }
+			h1 { font-family: 'messina_sansbold', sans-serif; font-size: 55px; line-height: 1.1; margin: 45px 0 0; color: #FFF; padding:0; font-weight: normal; font-style: normal; text-align: center; }
 			h2, h3, h4, h5 { font-family: 'messina_sansbook', sans-serif; font-weight: normal; font-style: normal; }
 			h2 { font-size: 40px; }
 			h3 { font-size: 26px; }
 			p, nav ul li { font-family: 'messina_sansbook', sans-serif;  }
 		
 			img { width: 100%; }
-			#home { background: rgb(255,89,90); background: linear-gradient(180deg, rgba(255,89,90,1) 0%, rgba(255,89,90,1) 46%, rgba(255,255,255,1) 46%, rgba(255,255,255,1) 100%); }
+			#home { background: rgb(255,89,90); background: linear-gradient(180deg, rgba(255,89,90,1) 0%, rgba(255,89,90,1) 75%, rgba(255,255,255,1) 75%, rgba(255,255,255,1) 100%); }
 			
-			#home h2 { color: #FFF; margin: 0; padding: 0; }
+			#home h2 { color: #FFF; margin: 15px 0 50px; padding: 0; text-align: center; font-size: 30px; font-weight: normal; font-style: normal; }
 			#home p { color: #FFF; margin: 0; padding: 0; }
+			#home p.mobileCall { display: block; text-align: right; font-size: 24px; padding-left: 30%; line-height: 1.3; margin-bottom: 24px; }
 			
-			nav ul { margin:0; padding: 0; list-style-type: none; text-align: right; }
+			nav ul { margin:0; padding: 25px 0 0; list-style-type: none; text-align: center; }
 				nav ul li { display: inline-block; }
-					nav ul li a { color: #FFF; text-decoration: none; }
+					nav ul li a { color: #FFF; text-decoration: none; margin:24px 12px; }
 			
-			.previewGrid { max-width: 1480px; margin: auto; display: grid; grid-template-columns: repeat(49, minmax(2px, 1fr)); grid-template-rows: repeat(28, minmax(1.9em, 1fr)); }
+			
 			
 			.pgCall { grid-column: 9 / 50; grid-row: 1 / 2; }
 			.grid01 { grid-column: 1 / 22; grid-row: 4 / 17; background-image: url('grid-01.jpeg'); background-size: cover; }
@@ -88,13 +90,38 @@
 			.contactCol { border-bottom: 1px solid #13242D; margin-bottom:2rem; }
 			
 			.servicesRow { border-bottom: none; display: block; }
-				.servicesRow h3 { border-bottom: 1px solid #13242D; padding-bottom: 25px; font-size: 21px; }	
+				.servicesRow h3 { border-bottom: 1px solid #13242D; padding-bottom: 25px; font-size: 21px; }
+				
+			.previewGrid { display: none; }	
+			.mobileGrid { display: block; }
+			
+			.slick-dots { position: absolute; bottom: -25px;display: block;width: 100%;padding: 0;margin: 0;list-style: none;text-align: center;}
+			.slick-dots li { position: relative;display: inline-block;width: 20px;height: 20px;margin: 0 5px;padding: 0;cursor: pointer;}
+			.slick-dots li button {font-size: 0;line-height: 0;display: block;width: 20px;height: 20px;padding: 5px;cursor: pointer;color: transparent;border: 0;outline: none;background: transparent;}
+			.slick-dots li button:before {font-size: 30px;line-height: 30px;position: absolute;top: 0;left: 0;width: 20px;height: 20px;content: '•';text-align: center;opacity: .25;color: black;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
+			
+			
+			.slick-dots li.slick-active button:before {opacity: .75;color: black;}
+			
+			
+				
+			/* == grid 640px == */
+			@media screen and (min-width:640px) {
+				#home { background: rgb(255,89,90); background: linear-gradient(180deg, rgba(255,89,90,1) 0%, rgba(255,89,90,1) 46%, rgba(255,255,255,1) 46%, rgba(255,255,255,1) 100%); }
+				.previewGrid { max-width: 1480px; margin: auto; display: grid; grid-template-columns: repeat(49, minmax(2px, 1fr)); grid-template-rows: repeat(28, minmax(0.8em, 1fr)); }
+				.mobileGrid, #home p.mobileCall { display: none; }
+				h1 { font-size: 66px; margin: 80px 0 0;  padding:0; text-align: left; }
+				#home h2 { text-align: left;  margin: 0; padding: 0; }
+				nav ul { margin:0; padding: 0; text-align: right; }
+				
+			}
 			
 			/* == tablet == */
 			@media screen and (min-width:768px) {
 				.profilepic { max-width: 264px; }
 				.servicesRow { border-bottom: 1px solid #13242D; display: grid; grid-template-columns: 1fr 1fr; column-gap: 3rem; }
 				.servicesRow h3 { border-bottom: none; }
+				.previewGrid { grid-template-rows: repeat(28, minmax(1.3em, 1fr)); }
 			}
 			
 			/* == desktop == */
@@ -103,6 +130,7 @@
 				.servicesRow { border-bottom: 1px solid #13242D; display: grid; grid-template-columns: 1fr 1fr; column-gap: 3rem; }
 				.workwrap { grid-template-columns: repeat(5, minmax(135px, 1fr)); column-gap: 4em; }
 				.clink { font-size: 2em; margin: 0 0 2rem; }
+				.previewGrid { grid-template-rows: repeat(28, minmax(1.9em, 1fr)); }
 			}
 		</style>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -128,7 +156,14 @@
 				</nav>
 				<h1>Laura Romanoff</h1>
 				<h2>Marketing &amp; Communications</h2>
-				
+				<p class="mobileCall">Partners in growing creative businesses</p>
+				<div class="mobileGrid">
+					<img src="grid-01.jpeg" alt="Work space" />
+					<img src="grid-02.jpeg" alt="Fabrics" />
+					<img src="grid-03.jpeg" alt="Patio" />
+					<img src="grid-04.jpeg" alt="Restaurant" />
+					<img src="grid-05.jpeg" alt="Hotel" />
+				</div>
 			</div>
 			<div class="previewGrid">
 				<p class="pgCall">Partners in growing creative businesses</p>
@@ -235,6 +270,20 @@
 				</div>
 			</div>
 		</footer>
-		<script src="index.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			  $('.mobileGrid').slick({
+				infinite: true,
+				adaptiveHeight: true,
+				dots: true,
+				arrows: false,
+				slidesToShow: 1
+			  });
+			});
+		
+		</script>
 	</body>
 </html>
